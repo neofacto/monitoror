@@ -46,7 +46,7 @@
   --color-firefly: #11263a;
   --color-pickled-bluewood: #2c3e50;
   --color-spindle: #cfdff0;
-  --color-loblolly: #b3bdc7;
+  --color-loblolly: #afbdca;
   --color-spring-wood: #f8f8f2;
   --color-text: #ffffff;
   --color-succeeded: #88d8b0;
@@ -1080,10 +1080,6 @@ input {
  * Documentation
  */
 
-.m-documentation {
-  margin-top: 70px;
-}
-
 .m-documentation--header-mobile {
   position: fixed;
   top: 0;
@@ -1094,7 +1090,7 @@ input {
   border-bottom: 1px solid var(--color-code-background);
   text-align: center;
   padding: 5px 0;
-  z-index: 1;
+  z-index: 10;
 }
 
 .m-documentation--header-menu-icon {
@@ -1384,6 +1380,7 @@ input {
 .m-documentation--section h3,
 .m-documentation--section h4 {
   position: relative;
+  overflow: hidden;
 }
 
 .m-documentation--title-link {
@@ -1605,8 +1602,8 @@ input {
   margin: 0 5px -3px 0;
   width: 32px;
   height: 30px;
-  background: currentColor;
-  fill: var(--color-background);
+  color: var(--color-background);
+  background: var(--color-succeeded);
   padding: 4px 6px;
   border-radius: 3px;
   transform: translateY(-3px);
@@ -1618,36 +1615,83 @@ input {
 
 /* Cards */
 
+.m-documentation--section-title + .m-documentation--cards-container {
+  margin-top: 50px;
+}
+
 .m-documentation--cards-container {
   --min-column-width: 150px;
 
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(var(--min-column-width), 1fr));
-  grid-gap: 20px;
-  margin: 15px 0 50px;
+  grid-gap: 13px;
+}
+
+.m-documentation--cards-container + .m-documentation--configuration-side-title {
+  position: relative;
+  margin-top: 50px;
+  margin-bottom: 13px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.m-documentation--cards-container + .m-documentation--configuration-side-title span {
+  position: relative;
+  display: inline-block;
+  background: var(--color-background);
+  padding-right: 10px;
+  z-index: 1;
+}
+
+.m-documentation--cards-container + .m-documentation--configuration-side-title::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--color-loblolly);
+  z-index: 0;
+  transform: translateY(-50%);
+  opacity: 0.15;
 }
 
 .m-documentation-card {
   position: relative;
   display: block;
   overflow: hidden;
-  height: 150px;
-  font-size: 20px;
+  height: 110px;
+  font-size: 18px;
   font-weight: 600;
   line-height: 1.2;
   letter-spacing: 0.3px;
   text-decoration: none;
-  padding: 22px 25px;
-  color: var(--color-succeeded);
-  /*color: var(--color-spindle);*/
-  background: rgba(207, 223, 240, 0.03);
-  background: var(--color-code-background);
-  border: 1px solid hsla(211, 52%, 88%, 0.13);
+  padding: 15px;
+  color: var(--color-firefly);
+  background: var(--color-loblolly);
   border-radius: 4px;
+  box-shadow: var(--color-code-background) 3px 3px 15px;
   transition: color 200ms, background 200ms, border-color 200ms;
+}
 
-  border-color: hsla(150, 51%, 69%, 0.3);
-  background: hsla(150, 51%, 69%, 0.05);
+.m-documentation-card__big {
+  font-size: 22px;
+  color: var(--color-code-background);
+}
+
+.m-documentation-card__blue {
+  background-image: linear-gradient(140deg, hsl(197, 100%, 70%), var(--color-action-required));
+}
+
+.m-documentation-card__green {
+  background-image: linear-gradient(140deg, hsl(140, 55%, 75%), var(--color-succeeded));
+}
+
+.m-documentation-card__light {
+  border: 1px solid rgba(207, 223, 240, 0.1);
+  color: var(--color-loblolly);
+  background: var(--color-background);
 }
 
 .m-documentation-card:not(:disabled):hover {
@@ -1662,7 +1706,11 @@ input {
   bottom: -15px;
   width: 90px;
   height: 90px;
-  opacity: 0.2;
+  opacity: 0.3;
+}
+
+.m-documentation-card__light .m-documentation-card--icon {
+  opacity: 0.15;
 }
 
 /* Demo */
@@ -2003,7 +2051,7 @@ dl + .m-documentation--example-and-demo {
 
 @media screen and (min-width: 800px) {
   .m-documentation--section-title {
-    font-size: 80px;
+    font-size: 76px;
     padding: 50px 0 30px;
   }
 
@@ -2052,6 +2100,10 @@ dl + .m-documentation--example-and-demo {
   .m-documentation--demo::before {
     left: 15px;
     text-align: left;
+  }
+
+  .m-documentation-card {
+    padding: 17px 20px;
   }
 }
 
