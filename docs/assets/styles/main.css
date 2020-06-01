@@ -61,6 +61,26 @@
   scrollbar-color: var(--color-cello) var(--color-code-background);
 }
 
+
+::-webkit-scrollbar {
+  width: 17px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-code-background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-cello);
+  border: 2px solid var(--color-code-background);
+  border-top: 0;
+  border-bottom: 0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-action-required);
+}
+
 *,
 *::before,
 *::after {
@@ -199,6 +219,7 @@ input {
 .c-button svg {
   display: inline-block;
   width: 13px;
+  height: 13px;
   margin-left: 10px;
   transform: translateY(1px);
 }
@@ -531,7 +552,7 @@ input {
   padding-top: 100%;
   margin: 0 auto;
   color: var(--color-cello);
-  background: var(--color-loblolly);
+  background-image: linear-gradient(140deg, var(--color-spindle) -100%, var(--color-loblolly));
   border-radius: 4px;
   box-shadow: var(--color-code-background) 0 0 15px;
 }
@@ -1131,25 +1152,6 @@ input {
   height: 40px;
 }
 
-.m-documentation ::-webkit-scrollbar {
-  width: 17px;
-}
-
-.m-documentation ::-webkit-scrollbar-track {
-  background: var(--color-code-background);
-}
-
-.m-documentation ::-webkit-scrollbar-thumb {
-  background: var(--color-cello);
-  border: 2px solid var(--color-code-background);
-  border-top: 0;
-  border-bottom: 0;
-}
-
-.m-documentation ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-action-required);
-}
-
 .m-sidebar {
   position: fixed;
   overflow-y: auto;
@@ -1372,11 +1374,10 @@ input {
   width: 50px;
   height: 50px;
   color: var(--color-cello);
-  background: var(--color-spindle);
+  background-image: linear-gradient(140deg, var(--color-spindle) -100%, var(--color-loblolly));
   padding: 8px;
   border-radius: 4px;
   box-shadow: rgba(23, 27, 32, 1) 3px 3px 15px;
-  opacity: 0.8;
 }
 
 .m-documentation--section h3,
@@ -1635,7 +1636,8 @@ input {
 
 .m-documentation--cards-container + .m-documentation--configuration-side-title {
   position: relative;
-  margin-top: 50px;
+  padding-top: 50px;
+  margin-top: 0;
   margin-bottom: 13px;
   font-size: 18px;
   font-weight: 400;
@@ -1653,7 +1655,7 @@ input {
   content: "";
   display: block;
   position: absolute;
-  top: 50%;
+  top: calc((100% - 50px) / 2 + 49px);
   left: 0;
   width: 100%;
   height: 2px;
@@ -1672,7 +1674,7 @@ input {
 }
 
 .m-documentation-card--mask {
-  --card-hover-color: var(--color-loblolly);
+  --card-hover-color: var(--color-spindle);
   position: relative;
   display: block;
   overflow: hidden;
@@ -1683,10 +1685,10 @@ input {
   letter-spacing: 0.3px;
   padding: 15px;
   color: var(--color-firefly);
-  background: var(--color-loblolly);
+  background-image: linear-gradient(140deg, var(--color-spindle) -100%, var(--color-loblolly));
   clip-path: inset(0 0 0 0 round 4px);
   will-change: color;
-  transition: color 250ms, box-shadow 300ms;
+  transition: color 250ms, box-shadow 100ms;
 }
 
 .m-documentation-card--mask::after {
@@ -1730,27 +1732,27 @@ input {
 .m-documentation-card__light .m-documentation-card--mask {
   --card-hover-color: var(--color-spindle);
   color: var(--color-loblolly);
-  background: #1e262e;
+  background-image: linear-gradient(140deg, hsl(210, 20%, 17%) -50%, #1e262e);
 }
 
 .m-documentation-card--icon {
   position: absolute;
-  right: -15px;
-  bottom: -15px;
-  width: 85px;
-  height: 85px;
+  right: 12px;
+  bottom: 8px;
+  width: 45px;
+  height: 45px;
   opacity: 0.3;
   transition: opacity 130ms;
 }
 
 .m-documentation-card__light .m-documentation-card--icon {
-  opacity: 0.1;
+  opacity: 0.15;
 }
 
 .m-documentation-card:not(:disabled):hover .m-documentation-card--mask {
   color: var(--card-hover-color);
   box-shadow: inset var(--card-hover-color) 0 -4px 0;
-  transition: color 100ms, box-shadow 300ms;
+  transition: color 100ms, box-shadow 50ms ease 110ms;
 }
 
 .m-documentation-card:not(:disabled):hover .m-documentation-card--mask::after {

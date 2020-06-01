@@ -138,7 +138,7 @@ Array.from(document.querySelectorAll('.m-documentation h3[id], .m-documentation 
   anchor.href = '#' + title.id
   anchor.title = 'Permalink to ' + title.innerText
   anchor.classList.add('m-documentation--title-link')
-  anchor.innerHTML = '<svg><use xlink:href="#link-icon"></use></svg>'
+  anchor.innerHTML = '<svg><use xlink:href="/assets/images/icons.svg#link-icon"></use></svg>'
   // title.parentNode.insertBefore(anchor, title.nextSibling)
   title.appendChild(anchor)
 })
