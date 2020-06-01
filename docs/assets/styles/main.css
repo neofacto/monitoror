@@ -1103,6 +1103,10 @@ input {
  * Documentation
  */
 
+.m-documentation {
+  margin-top: 30px;
+}
+
 .m-documentation--header-mobile {
   position: fixed;
   top: 0;
