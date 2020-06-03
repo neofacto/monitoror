@@ -29,8 +29,7 @@
         {{ message }}
       </div>
 
-      <div class="c-monitoror-tile--value" v-if="displayedValue">
-        {{ displayedValue }}
+      <div class="c-monitoror-tile--value" v-if="displayedValue" v-html="displayedValue">
       </div>
 
       <div class="c-monitoror-tile--sub-tiles" v-if="isGroup">
